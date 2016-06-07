@@ -1,9 +1,9 @@
 ## BUILDING
 ##   (from project root directory)
-##   $ docker build -t prydonius-node-todo .
+##   $ docker build -t migmartri-node-todo .
 ##
 ## RUNNING
-##   $ docker run -p 3000:3000 prydonius-node-todo
+##   $ docker run -p 3000:3000 migmartri-node-todo
 ##
 ## CONNECTING
 ##   Lookup the IP of your active docker host using:
@@ -15,8 +15,8 @@ FROM gcr.io/stacksmith-images/debian-buildpack:wheezy-r07
 
 MAINTAINER Bitnami <containers@bitnami.com>
 
-ENV STACKSMITH_STACK_ID="1njbh3u" \
-    STACKSMITH_STACK_NAME="prydonius/node-todo" \
+ENV STACKSMITH_STACK_ID="gmkgfb0" \
+    STACKSMITH_STACK_NAME="migmartri/node-todo" \
     STACKSMITH_STACK_PRIVATE="1"
 
 RUN bitnami-pkg install node-6.2.1-0 --checksum f38ccc063ccc74ab095ddcb5bd227c0722e348f53e31652fd2840779be9e581f
@@ -26,12 +26,11 @@ ENV PATH=/opt/bitnami/node/bin:/opt/bitnami/python/bin:$PATH \
 
 ## STACKSMITH-END: Modifications below this line will be unchanged when regenerating
 
-
 # ExpressJS template
 COPY . /app
 WORKDIR /app
 
 RUN npm install
 
-EXPOSE 8080
-CMD ["node", "server.js"]
+EXPOSE 3000
+CMD ["npm", "start"]
